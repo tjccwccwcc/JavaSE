@@ -2,6 +2,28 @@ package Arithmetic.Dp;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+/**
+ * 题目难易：中等
+ *
+ * 给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
+ *
+ * 注意: 每个数组中的元素不会超过 100 数组的大小不会超过 200
+ *
+ * 示例 1:
+ *
+ * 输入: [1, 5, 11, 5]
+ * 输出: true
+ * 解释: 数组可以分割成 [1, 5, 5] 和 [11].
+ * 示例 2:
+ *
+ * 输入: [1, 2, 3, 5]
+ * 输出: false
+ * 解释: 数组不能分割成两个元素和相等的子集.
+ * 提示：
+ *
+ * 1 <= nums.length <= 200
+ * 1 <= nums[i] <= 100
+ */
 
 /**
  * 0-1 背包
@@ -10,13 +32,13 @@ import java.util.Comparator;
  * weight[]：nums
  */
 
-public class CanPartition {
+public class B2_CanPartition {
     public static void main(String[] args) {
-        CanPartition canPartition = new CanPartition();
+        B2_CanPartition b2CanPartition = new B2_CanPartition();
         int[] nums = new int[]{14,9,8,4,3,2};
-        System.out.println(canPartition.canPartition(nums));
-        System.out.println(canPartition.canPartition1(nums));
-        System.out.println(canPartition.canPartition2(nums));
+        System.out.println(b2CanPartition.canPartition(nums));
+        System.out.println(b2CanPartition.canPartition1(nums));
+        System.out.println(b2CanPartition.canPartition2(nums));
     }
     public boolean canPartition(int[] nums) {
         int sum = 0;

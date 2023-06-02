@@ -1,8 +1,9 @@
 package Arithmetic.Dp;
 /**
  * 0-1背包问题
+ * https://www.programmercarl.com/%E8%83%8C%E5%8C%85%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%8001%E8%83%8C%E5%8C%85-1.html#_01-%E8%83%8C%E5%8C%85
  */
-public class BagProblem {
+public class B1_BagProblem {
     public static void main(String[] args) {
         int[] weight = {1,3,4};
         int[] value = {15,20,30};

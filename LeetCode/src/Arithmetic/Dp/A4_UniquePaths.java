@@ -1,12 +1,16 @@
 package Arithmetic.Dp;
 /**
+ * https://leetcode.cn/problems/unique-paths/
+ */
+
+/**
  * 1、dp:方法数  m、n:位置
  * 2、dp[m][n] = dp[m-1][n] + dp[m][n-1]
  * 3、dp[0][0] = 0, dp[1][0] = dp[0][1] = 1, m,n > 1
  * 4、正序
  * 5、
  */
-public class UniquePaths {
+public class A4_UniquePaths {
     public static void main(String[] args) {
         int m = 7;
         int n = 3;

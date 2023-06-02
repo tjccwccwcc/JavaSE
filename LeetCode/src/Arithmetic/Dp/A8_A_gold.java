@@ -31,7 +31,7 @@ import java.util.*;
  *
  * 8 3 8 8 1 0 4 7 5 4 3 5 2 6 5
  */
-public class A_gold {
+public class A8_A_gold {
 //    public static void main(String[] args) {
 //        Scanner input = new Scanner(System.in);
 //        System.out.print("输入行数：");
@@ -55,7 +55,7 @@ public class A_gold {
 //            }
 //            System.out.println();
 //        }
-//        A_gold a_gold = new A_gold();
+//        A8_A_gold a_gold = new A8_A_gold();
 //        System.out.println(a_gold.maxPoint(nums));
 //    }
 //    public int maxPoint(int[][] nums){

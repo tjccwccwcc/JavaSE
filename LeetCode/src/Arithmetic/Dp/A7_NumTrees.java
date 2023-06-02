@@ -1,6 +1,9 @@
 package Arithmetic.Dp;
 
 import groovyjarjarantlr4.v4.runtime.atn.EpsilonTransition;
+/**
+ * https://leetcode.cn/problems/unique-binary-search-trees/
+ */
 
 /**
  * 1 dp:n节点二叉搜索树数量  n:二叉搜索树节点数
@@ -8,7 +11,7 @@ import groovyjarjarantlr4.v4.runtime.atn.EpsilonTransition;
  * 3 dp[0] = 1, dp[1] = 1
  * 4 正序
  */
-public class NumTrees {
+public class A7_NumTrees {
     public static void main(String[] args) {
         System.out.println(numTrees(4));
         System.out.println(numTrees1(4));

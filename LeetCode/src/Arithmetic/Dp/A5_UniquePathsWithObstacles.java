@@ -1,6 +1,9 @@
 package Arithmetic.Dp;
 
-public class UniquePathsWithObstacles {
+/**
+ * https://leetcode.cn/problems/unique-paths-ii/
+ */
+public class A5_UniquePathsWithObstacles {
     public static void main(String[] args) {
         int[][] obstacleGrid = new int[][]{{0,0,0},{0,1,0},{0,0,0}};
         System.out.println(uniquePathsWithObstacles(obstacleGrid));
