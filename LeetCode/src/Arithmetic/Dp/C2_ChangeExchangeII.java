@@ -39,6 +39,9 @@ import java.util.Arrays;
  *
  *          0  1  2  3
  * coin 2   1  1  1  0
+ *
+ * 如果求组合数就是外层for循环遍历物品，内层for遍历背包。
+ * 如果求排列数就是外层for遍历背包，内层for循环遍历物品。
  */
 public class C2_ChangeExchangeII {
     public static void main(String[] args) {
