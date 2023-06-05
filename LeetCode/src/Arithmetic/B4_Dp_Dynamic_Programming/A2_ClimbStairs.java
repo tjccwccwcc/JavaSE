@@ -1,30 +1,38 @@
-package Arithmetic.Dp;
+package Arithmetic.B4_Dp_Dynamic_Programming;
 
 import java.util.Scanner;
-
 /**
- * 斐波那契数，通常用 F(n) 表示，形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是： F(0) = 0，F(1) = 1 F(n) = F(n - 1) + F(n - 2)，其中 n > 1 给你n ，请计算 F(n) 。
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ *
+ * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+ *
+ * 注意：给定 n 是一个正整数。
  *
  * 示例 1：
  *
- * 输入：2
- * 输出：1
- * 解释：F(2) = F(1) + F(0) = 1 + 0 = 1
+ * 输入： 2
+ * 输出： 2
+ * 解释： 有两种方法可以爬到楼顶。
+ * 1 阶 + 1 阶
+ * 2 阶
  * 示例 2：
  *
- * 输入：3
- * 输出：2
- * 解释：F(3) = F(2) + F(1) = 1 + 1 = 2
- * 示例 3：
- *
- * 输入：4
- * 输出：3
- * 解释：F(4) = F(3) + F(2) = 2 + 1 = 3
- * 提示：
- *
- * 0 <= n <= 30
+ * 输入： 3
+ * 输出： 3
+ * 解释： 有三种方法可以爬到楼顶。
+ * 1 阶 + 1 阶 + 1 阶
+ * 1 阶 + 2 阶
+ * 2 阶 + 1 阶
  */
-public class A1_FibonacciNumber {
+
+/**
+ * 1、dp:方法总数 n:n个台阶
+ * 2、dp[n] = dp[n-1] + dp[n-2]
+ * 3、dp[0] = 1, dp[1] = 1
+ * 4、正序
+ * 5、dp[2] = dp[1] + dp[0] = 2
+ */
+public class A2_ClimbStairs {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         while (true){
@@ -44,24 +52,21 @@ public class A1_FibonacciNumber {
         }
     }
     public static int Iterator(int n){
-        if (n < 0)
+        if (n <= 0)
             throw new NumberFormatException("NumberFormatException");
-        int[] dp = new int[n+1];
-        dp[0] = 0;
-        if (n >= 1)
-            dp[1] = 1;
-        if (n == 0 || n == 1)
-            return dp[n];
-        for (int i = 2; i <= n; i++) {
+        int[] dp = new int[n];
+        dp[0] = 1;
+        dp[1] = 2;
+        for (int i = 2; i < n; i++) {
             dp[i] = dp[i-1] + dp[i-2];
         }
-        return dp[n];
+        return dp[n-1];
     }
 
     public static int Iterator1(int n){
-        if (n < 0)
+        if (n <= 0)
             throw new NumberFormatException("NumberFormatException");
-        if (n == 0 || n == 1)
+        if (n == 1 || n == 2)
             return n;
         return Iterator1(n-2) + Iterator1(n-1);
     }

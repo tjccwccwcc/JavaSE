@@ -16,6 +16,7 @@ public class sort {
         arr =  insertSort(arr);
         print(arr);
 
+        //希尔排序
         arr1 =  shellSort(arr1);
         print(arr1);
 
@@ -23,6 +24,7 @@ public class sort {
         arr2 = bubbleSort(arr2);
         print(arr2);
 
+        //快速排序
         arr3 = quickSort(arr3,0,arr3.length - 1);//Arrays.sort()
         print(arr3);
 

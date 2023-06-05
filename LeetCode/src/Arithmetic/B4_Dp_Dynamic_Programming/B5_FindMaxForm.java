@@ -1,4 +1,4 @@
-package Arithmetic.Dp;
+package Arithmetic.B4_Dp_Dynamic_Programming;
 
 /**
  * 给你一个二进制字符串数组 strs 和两个整数 m 和 n 。
@@ -18,8 +18,6 @@ package Arithmetic.Dp;
  * strs[i] 仅由 '0' 和 '1' 组成
  * 1 <= m, n <= 100
  */
-
-import java.util.HashMap;
 
 /**
  * 0-1背包问题

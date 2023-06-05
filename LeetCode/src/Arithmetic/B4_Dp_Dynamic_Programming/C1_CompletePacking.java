@@ -1,4 +1,4 @@
-package Arithmetic.Dp;
+package Arithmetic.B4_Dp_Dynamic_Programming;
 
 /**
  * 背包最大重量为4。

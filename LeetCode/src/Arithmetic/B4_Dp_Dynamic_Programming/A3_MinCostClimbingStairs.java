@@ -1,4 +1,4 @@
-package Arithmetic.Dp;
+package Arithmetic.B4_Dp_Dynamic_Programming;
 /**
  * 数组的每个下标作为一个阶梯，第 i 个阶梯对应着一个非负数的体力花费值 cost[i]（下标从 0 开始）。
  *
