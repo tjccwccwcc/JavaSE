@@ -47,7 +47,6 @@ public class C2_ChangeExchangeII {
         int[] coins = new int[]{1,2,5};
         System.out.println(c2_changeExchangeII.change(amount, coins));
         System.out.println(c2_changeExchangeII.change1(amount, coins));
-        System.out.println(c2_changeExchangeII.change2(amount, coins));
     }
     public int change(int amount, int[] coins) {
         int[][] dp = new int[amount + 1][coins.length];
@@ -66,21 +65,6 @@ public class C2_ChangeExchangeII {
         return dp[amount][coins.length - 1];
     }
     public int change1(int amount, int[] coins) {
-        int[] dp = new int[amount + 1];
-        dp[0] = 1;
-        for (int i = 1; i < dp.length; i++) {
-            dp[i] = (coins[0] == 1 || i % coins[0] == 0) ? 1 : 0;
-        }
-        for (int i = 1; i < coins.length; i++) {
-            for (int j = 0; j < dp.length; j++) {
-                dp[j] = (j == 0) ?
-                        1 : (j < coins[i]) ?
-                        dp[j] : dp[j] + dp[j - coins[i]];
-            }
-        }
-        return dp[amount];
-    }
-    public int change2(int amount, int[] coins) {
         //递推表达式
         int[] dp = new int[amount + 1];
         //初始化dp数组，表示金额为0时只有一种情况，也就是什么都不装
