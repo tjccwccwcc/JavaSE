@@ -6,25 +6,29 @@ on:
       source_image:
         description: '源镜像地址'
         required: true
-        default: 'ghcr.io/prometheus-operator/prometheus-config-reloader:v0.78.2'
+        default: 'ghcr.io/prometheus-operator/prometheus-config-reloader:v0.83.0'
 
 jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull and Save Available Architectures
+      - name: Pull, Retag and Save Available Architectures
         run: |
           mkdir -p artifacts
           IMG="${{ github.event.inputs.source_image }}"
           
-          # 拉取并导出 amd64
+          # 1. 拉取 amd64 -> 重命名为独立标签 -> 导出 -> 清理本地缓存
           if docker pull --platform linux/amd64 "$IMG"; then
-            docker save -o artifacts/image-amd64.tar "$IMG"
+            docker tag "$IMG" export-temp:amd64
+            docker save -o artifacts/image-amd64.tar export-temp:amd64
+            docker rmi "$IMG" export-temp:amd64
           fi
           
-          # 尝试拉取并导出 arm64（不存在则跳过不报错）
+          # 2. 拉取 arm64 -> 重命名为独立标签 -> 导出 -> 清理本地缓存
           if docker pull --platform linux/arm64 "$IMG"; then
-            docker save -o artifacts/image-arm64.tar "$IMG"
+            docker tag "$IMG" export-temp:arm64
+            docker save -o artifacts/image-arm64.tar export-temp:arm64
+            docker rmi "$IMG" export-temp:arm64
           else
             echo "该镜像不支持 linux/arm64，已自动跳过。"
           fi
