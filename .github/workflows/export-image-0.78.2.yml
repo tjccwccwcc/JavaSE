@@ -1,0 +1,26 @@
+name: Export Multi-Arch Image to Tar
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_image:
+        description: '源镜像地址'
+        required: true
+        default: 'ghcr.io/prometheus-operator/prometheus-config-reloader:v0.78.2'
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull and Save AMD64 & ARM64 Images
+        run: |
+          docker pull --platform linux/amd64 "${{ github.event.inputs.source_image }}" && docker save -o image-amd64.tar "${{ github.event.inputs.source_image }}"
+          docker pull --platform linux/arm64 "${{ github.event.inputs.source_image }}" && docker save -o image-arm64.tar "${{ github.event.inputs.source_image }}"
+      - name: Upload Image Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: multi-arch-images
+          path: |
+            image-amd64.tar
+            image-arm64.tar
+          retention-days: 1
