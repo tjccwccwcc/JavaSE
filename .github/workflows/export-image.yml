@@ -12,15 +12,26 @@ jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull and Save AMD64 & ARM64 Images
+      - name: Pull and Save Available Architectures
         run: |
-          docker pull --platform linux/amd64 "${{ github.event.inputs.source_image }}" && docker save -o image-amd64.tar "${{ github.event.inputs.source_image }}"
-          docker pull --platform linux/arm64 "${{ github.event.inputs.source_image }}" && docker save -o image-arm64.tar "${{ github.event.inputs.source_image }}"
+          mkdir -p artifacts
+          IMG="${{ github.event.inputs.source_image }}"
+          
+          # 拉取并导出 amd64
+          if docker pull --platform linux/amd64 "$IMG"; then
+            docker save -o artifacts/image-amd64.tar "$IMG"
+          fi
+          
+          # 尝试拉取并导出 arm64（不存在则跳过不报错）
+          if docker pull --platform linux/arm64 "$IMG"; then
+            docker save -o artifacts/image-arm64.tar "$IMG"
+          else
+            echo "该镜像不支持 linux/arm64，已自动跳过。"
+          fi
+
       - name: Upload Image Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: multi-arch-images
-          path: |
-            image-amd64.tar
-            image-arm64.tar
+          name: exported-images
+          path: artifacts/*.tar
           retention-days: 1
